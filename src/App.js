@@ -100,29 +100,25 @@ function setMode(mode) {
     options.mode = mode
 }
 
-function bootstrapRangeEvents() {
+function bootstrapRangeEvents(brushOpacity, brushSize) {
     const ranges = [
         {
-            id: "brush-opacity",
-            handler: (el, textEl) => {
-                textEl.innerText = el.value;
+            el: brushOpacity.current,
+            handler: (el) => {
                 options.brush.opacity = (parseInt(el.value) / 100).toFixed(2);
             },
         },
         {
-            id: "brush-size",
-            handler: (el, textEl) => {
-                textEl.innerText = el.value;
+            el: brushSize.current,
+            handler: (el) => {
                 options.brush.size = parseInt(el.value);
             },
         },
     ];
 
     ranges.forEach(range => {
-        const el = document.getElementById(range.id);
-        const textEl = document.getElementById(`${range.id}--value`);
-        el.addEventListener("change", (e) => {
-            range.handler(el, textEl)
+        range.el.addEventListener("change", (e) => {
+            range.handler(range.el)
             getDrawCursor();
         })
     })
@@ -225,6 +221,8 @@ function loadImage() {
 function App() {
     const chooseButton = useRef(null);
     const fileInput = useRef(null);
+    const brushOpacity = useRef(null);
+    const brushSize = useRef(null);
 
     const drawingCanvas = useRef(null);
     const previewCanvas = useRef(null);
@@ -251,7 +249,7 @@ function App() {
         };
 
         bootstrapCanvasEvents();
-        bootstrapRangeEvents();
+        bootstrapRangeEvents(brushOpacity, brushSize);
         setDemoImage();
 
         tg.ready();
@@ -284,15 +282,15 @@ function App() {
                                 </ButtonGroup>
 
                                 <FormGroup>
-                                    <Form.Label>Brush Size</Form.Label>
+                                    {/*<Form.Label>Brush Size</Form.Label>*/}
                                     <span>32</span>
-                                    <Form.Range/>
+                                    <Form.Range ref={brushSize}/>
                                 </FormGroup>
 
                                 <FormGroup>
-                                    <Form.Label>Brush Opacity</Form.Label>
+                                    {/*<Form.Label>Brush Opacity</Form.Label>*/}
                                     <span>32</span>
-                                    <Form.Range/>
+                                    <Form.Range ref={brushOpacity}/>
                                 </FormGroup>
 
                                 <input type="file"
