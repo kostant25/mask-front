@@ -203,7 +203,7 @@ function clearCanvases() {
 }
 
 function loadImage() {
-    const file = document.getElementById('file-input').files[0];
+    const file = elements.fileInput.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = function (e) {
