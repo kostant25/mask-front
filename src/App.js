@@ -140,6 +140,19 @@ function bootstrapCanvasEvents() {
     canvases.drawing.canvas.addEventListener("mouseout", () => {
         options.isDrawing = false;
     });
+
+    canvases.drawing.canvas.addEventListener("touchmove", draw);
+    canvases.drawing.canvas.addEventListener("touch", (e) => {
+        options.isDrawing = true;
+        draw(e)
+        options.isDrawing = false;
+    });
+    canvases.drawing.canvas.addEventListener("touchstart", () => {
+        options.isDrawing = true;
+    });
+    canvases.drawing.canvas.addEventListener("touchend", () => {
+        options.isDrawing = false;
+    });
 }
 
 function draw(e) {
