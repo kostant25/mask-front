@@ -4,24 +4,24 @@ import {Button, ButtonGroup, Card, Col, Container, Row} from "react-bootstrap";
 
 const tg = window.Telegram.WebApp;
 
-const elements = {
-    image: null,
-    chooseButton: null,
-    saveButton: null,
-    fileInput: null
-}
-
-const options = {
-    mode: "draw",
-    isDrawing: false,
-    width: 480,
-    height: 640,
-    brush: {
-        size: 35,
-        hardness: 1,
-        opacity: 1,
-    },
-}
+// const elements = {
+//     image: null,
+//     chooseButton: null,
+//     saveButton: null,
+//     fileInput: null
+// }
+//
+// const options = {
+//     mode: "draw",
+//     isDrawing: false,
+//     width: 480,
+//     height: 640,
+//     brush: {
+//         size: 35,
+//         hardness: 1,
+//         opacity: 1,
+//     },
+// }
 
 const canvases = {
     preview: {
