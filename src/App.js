@@ -1,5 +1,5 @@
 import './App.css';
-import demoImg from '../public/demo.jpg';
+import demoImg from './demo.jpg';
 import {useEffect, useRef} from "react";
 import {Button, ButtonGroup, Card, Col, Container, Row} from "react-bootstrap";
 
