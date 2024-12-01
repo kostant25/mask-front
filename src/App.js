@@ -1,27 +1,28 @@
 import './App.css';
+import demoImg from '../public/demo.jpg';
 import {useEffect, useRef} from "react";
 import {Button, ButtonGroup, Card, Col, Container, Row} from "react-bootstrap";
 
 const tg = window.Telegram.WebApp;
 
-// const elements = {
-//     image: null,
-//     chooseButton: null,
-//     saveButton: null,
-//     fileInput: null
-// }
-//
-// const options = {
-//     mode: "draw",
-//     isDrawing: false,
-//     width: 480,
-//     height: 640,
-//     brush: {
-//         size: 35,
-//         hardness: 1,
-//         opacity: 1,
-//     },
-// }
+const elements = {
+    image: null,
+    chooseButton: null,
+    saveButton: null,
+    fileInput: null
+}
+
+const options = {
+    mode: "draw",
+    isDrawing: false,
+    width: 480,
+    height: 640,
+    brush: {
+        size: 35,
+        hardness: 1,
+        opacity: 1,
+    },
+}
 
 const canvases = {
     preview: {
@@ -32,6 +33,34 @@ const canvases = {
         canvas: null,
         ctx: null
     }
+}
+
+function setDemoImage() {
+    const image = new Image();
+    image.onload = function () {
+        handleCanvasForImage(image)
+    };
+    image.src = demoImg;
+    elements.image = image;
+    // getDrawCursor()
+}
+
+function handleCanvasForImage(image) {
+    const [width, height] = [image.width, image.height]
+
+    // adjusts canvas sizes
+    options.width = width;
+    options.height = height;
+    canvases.drawing.canvas.width = options.width;
+    canvases.drawing.canvas.height = options.height;
+    canvases.preview.canvas.width = options.width;
+    canvases.preview.canvas.height = options.height;
+
+    canvases.drawing.ctx.fillStyle = "white";
+    canvases.drawing.ctx.fillRect(0, 0, options.width, options.height);
+
+    // draw the uploaded photo on the preview canvas
+    canvases.preview.ctx.drawImage(image, 0, 0, options.width, options.height);
 }
 
 function App() {
@@ -52,6 +81,8 @@ function App() {
             canvas: previewCanvas.current,
             ctx: previewCtx
         };
+
+        setDemoImage();
 
         tg.ready();
     }, [])
