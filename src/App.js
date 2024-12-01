@@ -301,10 +301,13 @@ function App() {
 
                                 <Button variant="primary" ref={chooseButton}>Choose Image</Button>
 
-                                <DropdownButton title="Dropdown" id="bg-nested-dropdown">
-                                    <Dropdown.Item onClick={() => downloadFile('image')}>Image</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => downloadFile('mask')}>Mask</Dropdown.Item>
-                                </DropdownButton>
+                                <ButtonGroup>
+                                    <DropdownButton as={ButtonGroup} title="Save" id="bg-nested-dropdown">
+                                        <Dropdown.Item onClick={() => downloadFile('image')}>Image</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => downloadFile('mask')}>Mask</Dropdown.Item>
+                                    </DropdownButton>
+                                </ButtonGroup>
+
                             </Card.Body>
                         </Card>
                     </Row>
