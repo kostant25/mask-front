@@ -206,10 +206,11 @@ function downloadFile(type) {
         canvas = canvases.drawing.canvas;
         name = "mask.png"
     }
-    const link = document.createElement("a");
-    link.download = name;
-    link.href = canvas.toDataURL();
-    link.click();
+    tg.sendData(JSON.stringify({canvas}));
+    // const link = document.createElement("a");
+    // link.download = name;
+    // link.href = canvas.toDataURL();
+    // link.click();
 }
 
 function clearCanvases() {
