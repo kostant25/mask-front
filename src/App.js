@@ -304,17 +304,13 @@ function App() {
 
                                 <FormGroup>
                                     <Form.Label>Brush Size</Form.Label>
-                                    <span style="">{size}</span>
+                                    <span className="sizeSpan">{size}</span>
                                     <Form.Range ref={brushSize}/>
                                 </FormGroup>
 
                                 <FormGroup>
-                                    <Row>
-                                        <Col>
-                                            <Form.Label>Brush Opacity</Form.Label>
-                                            <span>{opacity}</span>
-                                        </Col>
-                                    </Row>
+                                    <Form.Label>Brush Opacity</Form.Label>
+                                    <span className="sizeSpan">{opacity}</span>
                                     <Form.Range ref={brushOpacity}/>
                                 </FormGroup>
 
