@@ -1,6 +1,6 @@
 import './App.css';
 import demoImg from './demo.jpg';
-import {useEffect, useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import {
     Button,
     ButtonGroup,
@@ -100,18 +100,20 @@ function setMode(mode) {
     options.mode = mode
 }
 
-function bootstrapRangeEvents(brushOpacity, brushSize) {
+function bootstrapRangeEvents(brushOpacity, brushSize, setSize, setOpacity) {
     const ranges = [
         {
             el: brushOpacity.current,
             handler: (el) => {
                 options.brush.opacity = (parseInt(el.value) / 100).toFixed(2);
+                setOpacity(options.brush.opacity);
             },
         },
         {
             el: brushSize.current,
             handler: (el) => {
                 options.brush.size = parseInt(el.value);
+                setSize(options.brush.size);
             },
         },
     ];
@@ -240,6 +242,9 @@ function App() {
     const drawingCanvas = useRef(null);
     const previewCanvas = useRef(null);
 
+    const [size, setSize] = useState(0);
+    const [opacity, setOpacity] = useState(0)
+
 
     useEffect(() => {
         elements.chooseButton = chooseButton.current;
@@ -262,7 +267,7 @@ function App() {
         };
 
         bootstrapCanvasEvents();
-        bootstrapRangeEvents(brushOpacity, brushSize);
+        bootstrapRangeEvents(brushOpacity, brushSize, setSize, setOpacity);
         setDemoImage();
 
         tg.ready();
@@ -295,14 +300,14 @@ function App() {
                                 </ButtonGroup>
 
                                 <FormGroup>
-                                    {/*<Form.Label>Brush Size</Form.Label>*/}
-                                    <span>32</span>
+                                    <Form.Label>Brush Size</Form.Label>
+                                    <span>{size}</span>
                                     <Form.Range ref={brushSize}/>
                                 </FormGroup>
 
                                 <FormGroup>
-                                    {/*<Form.Label>Brush Opacity</Form.Label>*/}
-                                    <span>32</span>
+                                    <Form.Label>Brush Opacity</Form.Label>
+                                    <span>{opacity}</span>
                                     <Form.Range ref={brushOpacity}/>
                                 </FormGroup>
 
