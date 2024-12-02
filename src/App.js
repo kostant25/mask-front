@@ -127,21 +127,21 @@ function bootstrapRangeEvents(brushOpacity, brushSize, setSize, setOpacity) {
 }
 
 function bootstrapCanvasEvents() {
-    // canvases.drawing.canvas.addEventListener("mousemove", draw);
-    // canvases.drawing.canvas.addEventListener("click", (e) => {
-    //     options.isDrawing = true;
-    //     draw(e)
-    //     options.isDrawing = false;
-    // });
-    // canvases.drawing.canvas.addEventListener("mousedown", () => {
-    //     options.isDrawing = true;
-    // });
-    // canvases.drawing.canvas.addEventListener("mouseup", () => {
-    //     options.isDrawing = false;
-    // });
-    // canvases.drawing.canvas.addEventListener("mouseout", () => {
-    //     options.isDrawing = false;
-    // });
+    canvases.drawing.canvas.addEventListener("mousemove", draw);
+    canvases.drawing.canvas.addEventListener("click", (e) => {
+        options.isDrawing = true;
+        draw(e)
+        options.isDrawing = false;
+    });
+    canvases.drawing.canvas.addEventListener("mousedown", () => {
+        options.isDrawing = true;
+    });
+    canvases.drawing.canvas.addEventListener("mouseup", () => {
+        options.isDrawing = false;
+    });
+    canvases.drawing.canvas.addEventListener("mouseout", () => {
+        options.isDrawing = false;
+    });
 
     canvases.drawing.canvas.addEventListener("touchmove", draw);
     canvases.drawing.canvas.addEventListener("touch", (e) => {
