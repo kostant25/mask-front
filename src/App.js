@@ -201,10 +201,10 @@ function applyMask() {
 
 function downloadFile(type) {
     let canvas = canvases.preview.canvas;
-    let name = "image.png"
+    // let name = "image.png"
     if (type === "mask") {
         canvas = canvases.drawing.canvas;
-        name = "mask.png"
+        // name = "mask.png"
     }
     tg.sendData(JSON.stringify({canvas}));
     // const link = document.createElement("a");
