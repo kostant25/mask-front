@@ -256,8 +256,8 @@ function App() {
         const drawingCtx = drawingCanvas.current.getContext("2d", {willReadFrequently: true});
         const previewCtx = previewCanvas.current.getContext("2d");
 
-        setSize(parseInt(brushSize.current.value));
-        setOpacity(parseInt(brushOpacity.current.value) / 100).toFixed(2)
+        // setSize(parseInt(brushSize.current.value));
+        // setOpacity(parseInt(brushOpacity.current.value) / 100).toFixed(2)
 
         canvases.drawing = {
             canvas: drawingCanvas.current,
@@ -303,15 +303,15 @@ function App() {
                                 </ButtonGroup>
 
                                 <FormGroup>
-                                    <Form.Label>Brush Size</Form.Label>
+                                    <Form.Label column="sizeBrush">Brush Size</Form.Label>
                                     <span className="sizeSpan">{size}</span>
-                                    <Form.Range ref={brushSize}/>
+                                    <Form.Range id="sizeBrush" ref={brushSize}/>
                                 </FormGroup>
 
                                 <FormGroup>
-                                    <Form.Label>Brush Opacity</Form.Label>
+                                    <Form.Label column="opacityBrush">Brush Opacity</Form.Label>
                                     <span className="sizeSpan">{opacity}</span>
-                                    <Form.Range ref={brushOpacity}/>
+                                    <Form.Range id="opacityBrush" ref={brushOpacity}/>
                                 </FormGroup>
 
                                 <input type="file"
