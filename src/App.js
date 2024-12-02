@@ -256,6 +256,9 @@ function App() {
         const drawingCtx = drawingCanvas.current.getContext("2d", {willReadFrequently: true});
         const previewCtx = previewCanvas.current.getContext("2d");
 
+        setSize(parseInt(brushSize.current.value));
+        setOpacity(parseInt(brushOpacity.current.value) / 100).toFixed(2)
+
         canvases.drawing = {
             canvas: drawingCanvas.current,
             ctx: drawingCtx
@@ -301,13 +304,17 @@ function App() {
 
                                 <FormGroup>
                                     <Form.Label>Brush Size</Form.Label>
-                                    <span>{size}</span>
+                                    <span style="">{size}</span>
                                     <Form.Range ref={brushSize}/>
                                 </FormGroup>
 
                                 <FormGroup>
-                                    <Form.Label>Brush Opacity</Form.Label>
-                                    <span>{opacity}</span>
+                                    <Row>
+                                        <Col>
+                                            <Form.Label>Brush Opacity</Form.Label>
+                                            <span>{opacity}</span>
+                                        </Col>
+                                    </Row>
                                     <Form.Range ref={brushOpacity}/>
                                 </FormGroup>
 
