@@ -149,10 +149,12 @@ function bootstrapCanvasEvents() {
         draw(e)
         options.isDrawing = false;
     });
-    canvases.drawing.canvas.addEventListener("touchstart", () => {
+    canvases.drawing.canvas.addEventListener("touchstart", (e) => {
+        e.preventDefault();
         options.isDrawing = true;
     });
-    canvases.drawing.canvas.addEventListener("touchend", () => {
+    canvases.drawing.canvas.addEventListener("touchend", (e) => {
+        e.preventDefault();
         options.isDrawing = false;
     });
 }
