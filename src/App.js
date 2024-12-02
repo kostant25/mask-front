@@ -209,7 +209,7 @@ function downloadFile(type) {
     const link = document.createElement("a");
     link.download = name;
     link.href = canvas.toDataURL();
-    tg.downloadFile(link.href);
+    tg.downloadFile(link.href, link.download);
     // link.click();
 }
 
