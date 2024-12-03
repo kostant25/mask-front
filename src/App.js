@@ -142,21 +142,6 @@ function bootstrapCanvasEvents() {
     canvases.drawing.canvas.addEventListener("mouseout", () => {
         options.isDrawing = false;
     });
-
-    canvases.drawing.canvas.addEventListener("touchmove", draw);
-    canvases.drawing.canvas.addEventListener("touch", (e) => {
-        options.isDrawing = true;
-        draw(e)
-        options.isDrawing = false;
-    });
-    canvases.drawing.canvas.addEventListener("touchstart", (e) => {
-        e.preventDefault();
-        options.isDrawing = true;
-    });
-    canvases.drawing.canvas.addEventListener("touchend", (e) => {
-        e.preventDefault();
-        options.isDrawing = false;
-    });
 }
 
 function draw(e) {
@@ -211,8 +196,7 @@ function downloadFile(type) {
     const link = document.createElement("a");
     link.download = name;
     link.href = canvas.toDataURL();
-    tg.downloadFile(link.href, link.download);
-    // link.click();
+    link.click();
 }
 
 function clearCanvases() {
